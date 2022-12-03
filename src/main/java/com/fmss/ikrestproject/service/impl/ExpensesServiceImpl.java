@@ -1,0 +1,51 @@
+package com.fmss.ikrestproject.service.impl;
+import com.fmss.ikrestproject.client.dto.request.ExpenseRequestDto;
+import com.fmss.ikrestproject.client.dto.responce.ExpenseResponseDto;
+import com.fmss.ikrestproject.mapper.ExpensesMapper;
+import com.fmss.ikrestproject.mapper.UserMapper;
+import com.fmss.ikrestproject.model.Expenses;
+import com.fmss.ikrestproject.repository.ExpensesRepository;
+import com.fmss.ikrestproject.service.ExpensesService;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
+
+@Service
+public class ExpensesServiceImpl implements ExpensesService {
+    private  final ExpensesRepository expensesRepository;
+    private  final ExpensesMapper expensesMapper;
+    private  final UserMapper userMapper;
+
+    public ExpensesServiceImpl(ExpensesRepository expensesRepository, ExpensesMapper expensesMapper, UserMapper userMapper) {
+        this.expensesRepository = expensesRepository;
+        this.expensesMapper = expensesMapper;
+        this.userMapper = userMapper;
+    }
+
+    @Override
+    @Transactional
+    public ExpenseResponseDto createExpense(ExpenseRequestDto expenseRequestDto) {
+        Expenses expenses=expensesMapper.toExpenses(expenseRequestDto);
+        expensesRepository.save(expenses);
+        return  expensesMapper.toExpenseDto(expenses);
+    }
+
+    @Override
+    public List<ExpenseResponseDto> getAllExpense(Long userid) {
+       return  expensesRepository.findAllByUser_UserId(userid).stream().map(expensesMapper::toExpenseDto).toList();
+    }
+
+    @Override
+    public Boolean deleteExpense(Long expenseid) {
+         expensesRepository.deleteById(expenseid);
+         return true;
+    }
+
+    @Override
+    public List<ExpenseResponseDto> getExpense() {
+        List<Expenses> users = expensesRepository.findAll();
+        List<ExpenseResponseDto> expenseResponseDtoList= users.stream().map(expensesMapper::toExpenseDto).toList();
+        return expenseResponseDtoList;
+
+    }
+}
