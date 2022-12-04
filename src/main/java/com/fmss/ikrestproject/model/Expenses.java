@@ -1,16 +1,13 @@
 package com.fmss.ikrestproject.model;
 
 
-import jdk.jfr.Timestamp;
+
 import lombok.*;
-
-
 import static com.fmss.ikrestproject.model.EntityConstantsUtil.PREFIX_TB;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.ZonedDateTime;
 
 @Entity
 @Getter
@@ -34,9 +31,6 @@ public class Expenses {
 
   @Column(name = "vat_percent")
   private int vatPercent;
-
-
-
 
   @Column(name = "spending_statement")
   private String spendingStatement;

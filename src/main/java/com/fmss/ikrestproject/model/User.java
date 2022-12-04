@@ -4,7 +4,6 @@ package com.fmss.ikrestproject.model;
 import com.fmss.ikrestproject.utils.enums.Level;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
@@ -67,10 +66,10 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL ,fetch =FetchType.EAGER)
     private Address address;
 
-    @OneToMany(mappedBy = "user",fetch =FetchType.LAZY,cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "user",fetch =FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Expenses> expensesList;
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY ,cascade = CascadeType.ALL)
     private List<Permission> permissionList;
 
 

@@ -1,9 +1,7 @@
 package com.fmss.ikrestproject.model;
 
 import lombok.*;
-
 import static com.fmss.ikrestproject.model.EntityConstantsUtil.PREFIX_TB;
-
 import javax.persistence.*;
 
 @Entity
