@@ -14,7 +14,7 @@ import static com.fmss.ikrestproject.model.EntityConstantsUtil.PREFIX_TB;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = PREFIX_TB+"permıssıon")
+@Table(name = PREFIX_TB+"permission")
 public class Permission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

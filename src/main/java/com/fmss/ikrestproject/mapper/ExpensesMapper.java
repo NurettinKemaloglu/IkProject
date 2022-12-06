@@ -31,7 +31,7 @@ public class ExpensesMapper {
         expenses.setReceiptDate(expenseRequestDto.getReceiptDate());
         expenses.setVatPercent(expenseRequestDto.getVatPercent());
         expenses.setSpendingStatement(expenseRequestDto.getSpendingStatement());
-        expenses.setUser(User.builder().userId(expenseRequestDto.getId()).build());
+        expenses.setUser(User.builder().userId(expenseRequestDto.getUserid()).build());
         return expenses;
     }
 

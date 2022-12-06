@@ -18,6 +18,7 @@ import java.time.LocalDate;
 public class Expenses {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
   private Long id;
 
   @Column(name = "type_of_expenditure")
@@ -34,7 +35,7 @@ public class Expenses {
 
   @Column(name = "spending_statement")
   private String spendingStatement;
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "userId" ,referencedColumnName = "userId")
   private User user;
 }

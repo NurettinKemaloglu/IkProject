@@ -5,22 +5,20 @@ import com.fmss.ikrestproject.mapper.ExpensesMapper;
 import com.fmss.ikrestproject.mapper.UserMapper;
 import com.fmss.ikrestproject.model.Expenses;
 import com.fmss.ikrestproject.repository.ExpensesRepository;
+import com.fmss.ikrestproject.repository.UserRepository;
 import com.fmss.ikrestproject.service.ExpensesService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ExpensesServiceImpl implements ExpensesService {
     private  final ExpensesRepository expensesRepository;
+    private  final UserRepository userRepository;
     private  final ExpensesMapper expensesMapper;
     private  final UserMapper userMapper;
-
-    public ExpensesServiceImpl(ExpensesRepository expensesRepository, ExpensesMapper expensesMapper, UserMapper userMapper) {
-        this.expensesRepository = expensesRepository;
-        this.expensesMapper = expensesMapper;
-        this.userMapper = userMapper;
-    }
 
     @Override
     @Transactional

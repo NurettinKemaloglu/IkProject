@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 @Data
 public class ExpenseRequestDto {
-    private Long id;
+    private Long userid;
 
     private String typeOfExpenditure;
 
