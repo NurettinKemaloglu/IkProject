@@ -13,4 +13,6 @@ public interface ExpensesService {
     Boolean deleteExpense(Long expenseid);
 
     List<ExpenseResponseDto> getExpense();
+
+    ExpenseResponseDto getExpenseById(Long id);
 }

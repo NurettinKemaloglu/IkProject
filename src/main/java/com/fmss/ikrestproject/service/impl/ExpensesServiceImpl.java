@@ -1,6 +1,7 @@
 package com.fmss.ikrestproject.service.impl;
 import com.fmss.ikrestproject.client.dto.request.ExpenseRequestDto;
 import com.fmss.ikrestproject.client.dto.responce.ExpenseResponseDto;
+import com.fmss.ikrestproject.exception.ExpenseNotFoundException;
 import com.fmss.ikrestproject.mapper.ExpensesMapper;
 import com.fmss.ikrestproject.mapper.UserMapper;
 import com.fmss.ikrestproject.model.Expenses;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -45,5 +47,11 @@ public class ExpensesServiceImpl implements ExpensesService {
         List<ExpenseResponseDto> expenseResponseDtoList= users.stream().map(expensesMapper::toExpenseDto).toList();
         return expenseResponseDtoList;
 
+    }
+
+    @Override
+    public ExpenseResponseDto getExpenseById(Long id) {
+        Optional<Expenses> expenses=expensesRepository.findById(id);
+        return  expenses.map(expensesMapper::toExpenseDto).orElseThrow(() -> new ExpenseNotFoundException("Harcama bulunamadı"));
     }
 }

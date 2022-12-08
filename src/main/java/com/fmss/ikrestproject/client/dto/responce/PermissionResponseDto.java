@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class PermissionResponseDto {
     private  Long id;
+
     private  String userName;
     private String lastName;
     private  String permissionType;

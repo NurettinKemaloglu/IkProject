@@ -1,6 +1,7 @@
 package com.fmss.ikrestproject.client.dto.responce;
 
 import com.fmss.ikrestproject.utils.enums.Level;
+import com.fmss.ikrestproject.utils.enums.Title;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ public class UserResponseDto {
     private  String name;
     private  String lastName;
     private String email;
-    private  String title;
+    private Title title;
     private  String department;
     private  String role;
     private String tckn;

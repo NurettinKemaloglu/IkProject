@@ -10,11 +10,10 @@ public interface UserService {
      UserResponseDto createUser(UserRequestDto userRequestDto);
 
     List<UserResponseDto> getAllUser();
-
      UserResponseDto getByUserId(Long userid);
 
 
     Boolean deleteUser(Long userid);
 
-    UserResponseDto UpdateUser(Long id, UpdateUserRequestDto userRequestDto);
+    UpdateUserRequestDto UpdateUser(Long id, UpdateUserRequestDto userRequestDto);
 }

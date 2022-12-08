@@ -4,6 +4,7 @@ import com.fmss.ikrestproject.client.dto.request.ExpenseRequestDto;
 import com.fmss.ikrestproject.client.dto.responce.ExpenseResponseDto;
 import com.fmss.ikrestproject.service.ExpensesService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -17,6 +18,7 @@ public class ExpenseController {
 
 
     @PostMapping()
+    @ResponseStatus(value = HttpStatus.CREATED)
     public ResponseEntity<ExpenseResponseDto> createExpense(@RequestBody ExpenseRequestDto expenseRequestDto ){
         return ResponseEntity.ok(expensesService.createExpense(expenseRequestDto));
     }
@@ -31,10 +33,16 @@ public class ExpenseController {
         return ResponseEntity.ok(expenseResponseDos);
 
     }
+    @GetMapping("/expenseid")
+    public ResponseEntity<ExpenseResponseDto>getExpenseById(@PathVariable Long id){
+        return ResponseEntity.ok(expensesService.getExpenseById(id));
+    }
     @DeleteMapping("/{expenseid}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public  ResponseEntity<Boolean>deleteExpense(@PathVariable Long expenseid){
         return ResponseEntity.ok(expensesService.deleteExpense(expenseid));
     }
+
 
 
 

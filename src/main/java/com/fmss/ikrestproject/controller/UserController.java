@@ -4,6 +4,7 @@ import com.fmss.ikrestproject.client.dto.request.UpdateUserRequestDto;
 import com.fmss.ikrestproject.client.dto.request.UserRequestDto;
 import com.fmss.ikrestproject.client.dto.responce.UserResponseDto;
 import com.fmss.ikrestproject.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -19,6 +20,7 @@ public class UserController {
     }
 
     @PostMapping()
+    @ResponseStatus(value =HttpStatus.CREATED)
     public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto userRequestDto) {
         return ResponseEntity.ok(userService.createUser(userRequestDto));
     }
@@ -35,13 +37,13 @@ public class UserController {
     }
 
     @DeleteMapping("/{userid}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public ResponseEntity<Boolean> deleteUser(@PathVariable Long userid) {
         return ResponseEntity.ok(userService.deleteUser(userid));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserResponseDto> updateUser(@PathVariable Long id,
-                                                      @RequestBody UpdateUserRequestDto userRequestDto) {
+    public ResponseEntity<UpdateUserRequestDto> updateUser(@PathVariable Long id, @RequestBody UpdateUserRequestDto userRequestDto) {
         return ResponseEntity.ok(userService.UpdateUser(id, userRequestDto));
 
     }

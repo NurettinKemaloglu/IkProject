@@ -2,6 +2,7 @@ package com.fmss.ikrestproject.model;
 
 
 import com.fmss.ikrestproject.utils.enums.Level;
+import com.fmss.ikrestproject.utils.enums.Title;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.*;
@@ -48,7 +49,8 @@ public class User {
     private BigDecimal salary;
 
     @Column(name = "title")
-    private  String title;
+    @Enumerated
+    private Title title;
 
     @Column(name = "birth_date")
     private LocalDate birthDate;
