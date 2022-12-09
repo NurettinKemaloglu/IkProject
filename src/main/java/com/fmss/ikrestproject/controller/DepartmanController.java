@@ -12,32 +12,36 @@ import java.util.List;
 @RequestMapping("/api/v1/fmss/departman")
 public class DepartmanController {
 
-    private  final DepartmanService departmanService;
+    private final DepartmanService departmanService;
 
     public DepartmanController(DepartmanService departmanService) {
         this.departmanService = departmanService;
     }
+
     @GetMapping
-    public ResponseEntity<List<Department>> getAll(){
-        return  new ResponseEntity<>(departmanService.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<Department>> getAll() {
+        return new ResponseEntity<>(departmanService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public  ResponseEntity<Department> getById(@PathVariable Long id){
-        return  new ResponseEntity<>(departmanService.getById(id),HttpStatus.OK);
+    public ResponseEntity<Department> getById(@PathVariable Long id) {
+        return new ResponseEntity<>(departmanService.getById(id), HttpStatus.OK);
     }
+
     @PostMapping
-    public  ResponseEntity<Department> add(@RequestBody Department department){
-        return  new ResponseEntity<>(departmanService.add(department),HttpStatus.CREATED);
+    public ResponseEntity<Department> add(@RequestBody Department department) {
+        return new ResponseEntity<>(departmanService.add(department), HttpStatus.CREATED);
     }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public ResponseEntity<?> delete(@PathVariable Long id) {
         departmanService.delete(id);
         return ResponseEntity.ok().build();
     }
+
     @PutMapping("/{id}")
-    public  ResponseEntity<Department> update(@PathVariable Long id, @RequestBody Department department){
-        return  new ResponseEntity<>(departmanService.update(id, department),HttpStatus.OK);
+    public ResponseEntity<Department> update(@PathVariable Long id, @RequestBody Department department) {
+        return new ResponseEntity<>(departmanService.update(id, department), HttpStatus.OK);
     }
 }

@@ -5,6 +5,7 @@ import com.fmss.ikrestproject.utils.enums.Level;
 import com.fmss.ikrestproject.utils.enums.Title;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
@@ -28,14 +29,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-    @Column(name = "name",length = 60)
-    private  String name;
-    @Column(name = "last_name",length = 60)
-    private  String lastName;
+    @Column(name = "name", length = 60)
+    private String name;
+    @Column(name = "last_name", length = 60)
+    private String lastName;
 
     @Email
     @Size(max = 100)
-    @Column(name = "email",unique = true)
+    @Column(name = "email", unique = true)
     protected String email;
 
     @Column(name = "tckn")
@@ -65,15 +66,14 @@ public class User {
     @ManyToOne
     private Department department;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL ,fetch =FetchType.EAGER)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Address address;
 
-    @OneToMany(mappedBy = "user",fetch =FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Expenses> expensesList;
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY ,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Permission> permissionList;
-
 
 
 }

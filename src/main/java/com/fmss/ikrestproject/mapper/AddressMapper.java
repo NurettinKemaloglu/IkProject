@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AddressMapper {
-    public AddressResponseDto toAdresDto(Address address){
-        final  var adresDto=new AddressResponseDto();
+    public AddressResponseDto toAdresDto(Address address) {
+        final var adresDto = new AddressResponseDto();
         adresDto.setCity(address.getCity());
         adresDto.setCountry(address.getCountry());
         adresDto.setPhoneNumber(address.getPhoneNumber());
@@ -16,7 +16,7 @@ public class AddressMapper {
         return adresDto;
     }
 
-    public Address toAdres(UserRequestDto userRequestDto){
+    public Address toAdres(UserRequestDto userRequestDto) {
         Address address = new Address();
         address.setCity(userRequestDto.getCity());
         address.setCountry(userRequestDto.getCountry());

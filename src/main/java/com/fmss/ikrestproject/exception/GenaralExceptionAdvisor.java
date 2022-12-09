@@ -20,7 +20,7 @@ public class GenaralExceptionAdvisor extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers,
                                                                   HttpStatus status, WebRequest request) {
         Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach(error ->{
+        ex.getBindingResult().getAllErrors().forEach(error -> {
             String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
@@ -32,17 +32,19 @@ public class GenaralExceptionAdvisor extends ResponseEntityExceptionHandler {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<?> userNotFoundExceptionHandler(UserNotFoundException exception)  {
+    public ResponseEntity<?> userNotFoundExceptionHandler(UserNotFoundException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
+
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(ExpenseNotFoundException.class)
-    public ResponseEntity<?> expenseNotFoundExceptionHandler(ExpenseNotFoundException exception)  {
+    public ResponseEntity<?> expenseNotFoundExceptionHandler(ExpenseNotFoundException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
+
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(PermissionNotFoundException.class)
-    public ResponseEntity<?> permissionNotFoundExceptionHandler(PermissionNotFoundException exception)  {
+    public ResponseEntity<?> permissionNotFoundExceptionHandler(PermissionNotFoundException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 

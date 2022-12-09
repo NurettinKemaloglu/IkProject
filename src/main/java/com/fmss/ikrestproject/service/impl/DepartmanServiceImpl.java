@@ -4,11 +4,12 @@ import com.fmss.ikrestproject.model.Department;
 import com.fmss.ikrestproject.repository.DepartmanRepository;
 import com.fmss.ikrestproject.service.DepartmanService;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 public class DepartmanServiceImpl implements DepartmanService {
-    private  final DepartmanRepository departmanRepository;
+    private final DepartmanRepository departmanRepository;
 
     public DepartmanServiceImpl(DepartmanRepository departmanRepository) {
         this.departmanRepository = departmanRepository;
@@ -26,7 +27,7 @@ public class DepartmanServiceImpl implements DepartmanService {
 
     @Override
     public Department update(Long id, Department department) {
-        Department department1 =departmanRepository.findById(id).get();
+        Department department1 = departmanRepository.findById(id).get();
         department1.setName(department.getName());
         return departmanRepository.save(department1);
     }

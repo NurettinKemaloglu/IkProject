@@ -1,8 +1,8 @@
 package com.fmss.ikrestproject.model;
 
 import lombok.Data;
-import javax.persistence.*;
 
+import javax.persistence.*;
 
 
 @Entity
@@ -12,6 +12,6 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private  String name;
+    private String name;
 
 }

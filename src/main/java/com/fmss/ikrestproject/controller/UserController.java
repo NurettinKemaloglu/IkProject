@@ -7,6 +7,8 @@ import com.fmss.ikrestproject.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,8 +22,8 @@ public class UserController {
     }
 
     @PostMapping()
-    @ResponseStatus(value =HttpStatus.CREATED)
-    public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto userRequestDto) {
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public ResponseEntity<UserResponseDto> createUser(@RequestBody @Valid UserRequestDto userRequestDto) {
         return ResponseEntity.ok(userService.createUser(userRequestDto));
     }
 

@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AddressResponseDto {
     private String city;
-    private  String country;
-    private  String phoneNumber;
-    private  String address;
+    private String country;
+    private String phoneNumber;
+    private String address;
 }

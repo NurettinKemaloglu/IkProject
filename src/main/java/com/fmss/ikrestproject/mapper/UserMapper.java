@@ -13,9 +13,10 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class UserMapper {
     private final AddressMapper addressMapper;
-    private  final DepartmanService departmanService;
-    public UserResponseDto toUserDto(User user){
-        final  var userDto =new UserResponseDto();
+    private final DepartmanService departmanService;
+
+    public UserResponseDto toUserDto(User user) {
+        final var userDto = new UserResponseDto();
         userDto.setName(user.getName());
         userDto.setLastName(user.getLastName());
         userDto.setDepartment(user.getDepartment().getName());
@@ -30,9 +31,10 @@ public class UserMapper {
         userDto.setId(user.getUserId());
         return userDto;
     }
-    public User toUser(UserRequestDto userRequestDto){
-        final  var user= new User();
-        Address address=new Address();
+
+    public User toUser(UserRequestDto userRequestDto) {
+        final var user = new User();
+        Address address = new Address();
         user.setBirthDate(userRequestDto.getBirthDate());
         user.setEmail(userRequestDto.getEmail());
         user.setLevel(userRequestDto.getLevel());

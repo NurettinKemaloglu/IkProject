@@ -1,6 +1,7 @@
 package com.fmss.ikrestproject.client.dto.request;
 
-import lombok.Data;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -8,10 +9,13 @@ import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-
-@Data
-public class ExpenseRequestDto {
-    private Long userid;
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@SuperBuilder
+@ToString
+public class UpdateExpenseRequestDto {
     @NotBlank(message = "Harcama türü boş olamaz ")
     private String typeOfExpenditure;
     @NotNull(message = "Harcama tutarı bol olamaz")
@@ -27,5 +31,3 @@ public class ExpenseRequestDto {
     private String spendingStatement;
 
 }
-
-

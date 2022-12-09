@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseDto getByUserId(Long userid) {
         Optional<User> user = userRepository.findById(userid);
-        return user.map(userMapper::toUserDto).orElseThrow(()->new  UserNotFoundException("Kullanıcı Bulunamadı ."));
+        return user.map(userMapper::toUserDto).orElseThrow(() -> new UserNotFoundException("Kullanıcı Bulunamadı ."));
     }
 
     @Override
@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UpdateUserRequestDto UpdateUser(Long id, UpdateUserRequestDto userRequestDto) {
-        userRepository.updateUser(userRequestDto.getEmail(), userRequestDto.getTitle(), userRequestDto.getRole(), userRequestDto.getSalary(),id);
-        return  userRequestDto;
+        userRepository.updateUser(userRequestDto.getEmail(), userRequestDto.getTitle(), userRequestDto.getRole(), userRequestDto.getSalary(), id);
+        return userRequestDto;
     }
 }

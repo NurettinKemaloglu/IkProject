@@ -10,6 +10,7 @@ import com.fmss.ikrestproject.repository.PermissionRepository;
 import com.fmss.ikrestproject.service.PermissionService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -17,19 +18,19 @@ import java.util.Optional;
 @AllArgsConstructor
 public class PermissionServiceImpl implements PermissionService {
     private final PermissionRepository permissionRepository;
-    private  final PermissionMapper permissionMapper;
+    private final PermissionMapper permissionMapper;
 
 
     @Override
     public PermissionResponseDto createPermission(PermissionRequestDto permissionRequestDto) {
-        Permission permission=permissionMapper.toPermission(permissionRequestDto);
+        Permission permission = permissionMapper.toPermission(permissionRequestDto);
         var don = permissionRepository.save(permission);
         return permissionMapper.toPermissionDto(permission);
     }
 
     @Override
     public List<PermissionResponseDto> getAllPermission() {
-        return  permissionRepository.findAll().stream().map(permissionMapper::toPermissionDto).toList();
+        return permissionRepository.findAll().stream().map(permissionMapper::toPermissionDto).toList();
 
     }
 
@@ -41,14 +42,14 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Override
     public UpdatePermissionRequestDto updatePermision(Long id, UpdatePermissionRequestDto permissionRequestDto) {
-        permissionRepository.updatePermission(permissionRequestDto.getPermissionType(),permissionRequestDto.getStartingDate(),permissionRequestDto.getEndDate(),permissionRequestDto.getDateOfReturn(),permissionRequestDto.getPermissionStatement(),id);
+        permissionRepository.updatePermission(permissionRequestDto.getPermissionType(), permissionRequestDto.getStartingDate(), permissionRequestDto.getEndDate(), permissionRequestDto.getDateOfReturn(), permissionRequestDto.getPermissionStatement(), id);
         return permissionRequestDto;
     }
 
     @Override
     public PermissionResponseDto getPermissionById(Long id) {
-        Optional<Permission> permission=permissionRepository.findById(id);
-        return permission.map(permissionMapper::toPermissionDto).orElseThrow(()-> new PermissionNotFoundException("İzin Kaydı Bulanamdı"));
+        Optional<Permission> permission = permissionRepository.findById(id);
+        return permission.map(permissionMapper::toPermissionDto).orElseThrow(() -> new PermissionNotFoundException("İzin Kaydı Bulanamdı"));
     }
 
     @Override

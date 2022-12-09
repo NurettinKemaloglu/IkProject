@@ -1,4 +1,5 @@
 package com.fmss.ikrestproject.mapper;
+
 import com.fmss.ikrestproject.client.dto.request.ExpenseRequestDto;
 import com.fmss.ikrestproject.client.dto.responce.ExpenseResponseDto;
 import com.fmss.ikrestproject.model.Expenses;
@@ -9,9 +10,8 @@ import org.springframework.stereotype.Component;
 public class ExpensesMapper {
 
 
-
-    public ExpenseResponseDto toExpenseDto(Expenses expenses){
-        final  var expenseDto=new ExpenseResponseDto();
+    public ExpenseResponseDto toExpenseDto(Expenses expenses) {
+        final var expenseDto = new ExpenseResponseDto();
         expenseDto.setSpendingAmounut(expenses.getSpendingAmounut());
         expenseDto.setSpendingStatement(expenses.getSpendingStatement());
         expenseDto.setTypeOfExpenditure(expenses.getTypeOfExpenditure());
@@ -24,8 +24,9 @@ public class ExpensesMapper {
         return expenseDto;
 
     }
-    public Expenses toExpenses(ExpenseRequestDto expenseRequestDto){
-        final  var expenses=new Expenses();
+
+    public Expenses toExpenses(ExpenseRequestDto expenseRequestDto) {
+        final var expenses = new Expenses();
         expenses.setTypeOfExpenditure(expenseRequestDto.getTypeOfExpenditure());
         expenses.setSpendingAmounut(expenseRequestDto.getSpendingAmounut());
         expenses.setReceiptDate(expenseRequestDto.getReceiptDate());

@@ -1,4 +1,5 @@
 package com.fmss.ikrestproject.client.dto.responce;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,12 +15,12 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class ExpenseResponseDto {
 
-    private  Long  id;
+    private Long id;
     private String typeOfExpenditure;
     private BigDecimal spendingAmounut;
     private String spendingStatement;
     private LocalDate receiptDate;
     private int vatPercent;
-    private  String userName;
-    private  String lastName;
+    private String userName;
+    private String lastName;
 }

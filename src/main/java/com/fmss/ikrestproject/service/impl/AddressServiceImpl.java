@@ -15,10 +15,10 @@ import java.util.Optional;
 
 @Service
 public class AddressServiceImpl implements AddressService {
-    private  final AddressRepository addressRepository;
+    private final AddressRepository addressRepository;
 
     private final UserRepository userRepository;
-    private  final AddressMapper addressMapper;
+    private final AddressMapper addressMapper;
 
     private final UserMapper userMapper;
 
@@ -31,15 +31,15 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Address createAdres(UserRequestDto userRequestDto) {
-        Address address =  addressMapper.toAdres(userRequestDto);
-        Address savedAddress =  addressRepository.save(address);
+        Address address = addressMapper.toAdres(userRequestDto);
+        Address savedAddress = addressRepository.save(address);
         return (savedAddress);
     }
 
     @Override
     public List<AddressResponseDto> getAllAdres() {
-        List<Address> adres= addressRepository.findAll();
-        List<AddressResponseDto> adresDtoList=adres.stream().map(addressMapper::toAdresDto).toList();
+        List<Address> adres = addressRepository.findAll();
+        List<AddressResponseDto> adresDtoList = adres.stream().map(addressMapper::toAdresDto).toList();
         return adresDtoList;
     }
 

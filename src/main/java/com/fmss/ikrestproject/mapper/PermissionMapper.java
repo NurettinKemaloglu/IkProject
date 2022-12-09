@@ -23,8 +23,8 @@ public class PermissionMapper {
         return permissionDto;
     }
 
-    public Permission toPermission(PermissionRequestDto permissionRequestDto){
-        final  var  permission= new Permission();
+    public Permission toPermission(PermissionRequestDto permissionRequestDto) {
+        final var permission = new Permission();
         permission.setPermissionStatement(permissionRequestDto.getPermissionStatement());
         permission.setPermissionType(permissionRequestDto.getPermissionType());
         permission.setStartingDate(permissionRequestDto.getStartingDate());

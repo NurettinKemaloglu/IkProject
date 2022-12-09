@@ -1,7 +1,9 @@
 package com.fmss.ikrestproject.model;
 
 import lombok.*;
+
 import static com.fmss.ikrestproject.model.EntityConstantsUtil.PREFIX_TB;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,21 +19,21 @@ public class Address {
     private Long id;
 
     @Column(name = "city")
-    private  String city;
+    private String city;
 
     @Column(name = "phone_number")
-    private  String phoneNumber;
+    private String phoneNumber;
 
     @Column(name = "country")
     private String country;
 
     @Column(name = "post_code")
-    private  String postCode;
+    private String postCode;
 
     @Column(name = "address")
     private String address;
 
     @OneToOne
     @JoinColumn(name = "userId", referencedColumnName = "userId")
-    private User user ;
+    private User user;
 }

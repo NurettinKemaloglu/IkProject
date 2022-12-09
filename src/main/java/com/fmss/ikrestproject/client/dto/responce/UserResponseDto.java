@@ -6,9 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
-
 
 
 @Getter
@@ -16,21 +16,18 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserResponseDto {
-    private  String name;
-    private  String lastName;
+    private String name;
+    private String lastName;
     private String email;
     private Title title;
-    private  String department;
-    private  String role;
+    private String department;
+    private String role;
     private String tckn;
     private LocalDate userDateOfStart;
     private BigDecimal salary;
     private Level level;
     private LocalDate birthDate;
     private Long id;
-
-
-
 
 
 }
