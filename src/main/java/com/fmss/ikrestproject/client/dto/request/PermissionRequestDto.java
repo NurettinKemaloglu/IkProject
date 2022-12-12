@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -28,6 +29,7 @@ public class PermissionRequestDto {
     private String permissionStatement;
     @FutureOrPresent
     private LocalDate dateOfReturn;
+
     private BigDecimal totalDays;
 
 }

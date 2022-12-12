@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin
 @RequestMapping("/api/v1/fmss/expense")
 @AllArgsConstructor
 public class ExpenseController {
@@ -40,7 +40,7 @@ public class ExpenseController {
 
     }
 
-    @GetMapping("/expenseid")
+    @GetMapping("/{expenseid}")
     public ResponseEntity<ExpenseResponseDto> getExpenseById(@PathVariable Long id) {
         return ResponseEntity.ok(expensesService.getExpenseById(id));
     }

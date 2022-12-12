@@ -41,7 +41,6 @@ public class UserRequestDto {
     private String city;
     @Pattern(regexp = "^(05)([0-9]{2})\\s?([0-9]{3})\\s?([0-9]{2})\\s?([0-9]{2})$", message = "Telefon numarası format hatası")
     private String phoneNumber;
-    @NotBlank(message = "Ülke boş olamaz")
     private String country;
 
     private String postCode;

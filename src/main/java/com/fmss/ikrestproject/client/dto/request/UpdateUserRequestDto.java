@@ -18,8 +18,8 @@ import java.math.BigDecimal;
 @ToString
 public class UpdateUserRequestDto {
 
-    @Email(regexp = "^(.+)@(.+)$", message = "Email is not valid. Please follow the example: turkcell@mail.com")
-    @NotBlank(message = "Email must not be null")
+    @Email(regexp = "^(.+)@(.+)$", message = "Email geçerli değil lütfen bu örnekteki formatta yazalım: nurettinfmss@gmail.com")
+    @NotBlank(message = "Email boş bırakılamaz")
     protected String email;
     @NotNull
     @Min(value = 0, message = "Maaş 0 dan küçük olamaz.")
