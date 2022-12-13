@@ -1,5 +1,6 @@
 package com.fmss.ikrestproject.client.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fmss.ikrestproject.utils.enums.Level;
 import com.fmss.ikrestproject.utils.enums.Title;
 import lombok.Getter;
@@ -32,7 +33,7 @@ public class UserRequestDto {
     private Title title;
     @NotNull(message = "depertman boş geçilemez")
     private Long department;
-
+    @JsonProperty(value = "birth-date")
     @Past
     private LocalDate birthDate;
     private String role;
