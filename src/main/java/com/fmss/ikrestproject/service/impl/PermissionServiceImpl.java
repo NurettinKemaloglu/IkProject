@@ -35,9 +35,8 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
-    public Boolean deletePermission(Long permissionid) {
+    public void deletePermission(Long permissionid) {
         permissionRepository.deleteById(permissionid);
-        return true;
     }
 
     @Override

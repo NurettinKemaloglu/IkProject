@@ -2,7 +2,6 @@ package com.fmss.ikrestproject.controller;
 
 import com.fmss.ikrestproject.client.dto.request.ExpenseRequestDto;
 import com.fmss.ikrestproject.client.dto.request.UpdateExpenseRequestDto;
-
 import com.fmss.ikrestproject.client.dto.responce.ExpenseResponseDto;
 import com.fmss.ikrestproject.service.ExpensesService;
 import lombok.AllArgsConstructor;
@@ -47,8 +46,8 @@ public class ExpenseController {
 
     @DeleteMapping("/{expenseid}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public ResponseEntity<Boolean> deleteExpense(@PathVariable Long expenseid) {
-        return ResponseEntity.ok(expensesService.deleteExpense(expenseid));
+    public void deleteExpense(@PathVariable Long expenseid) {
+        expensesService.deleteExpense(expenseid);
     }
 
     @PutMapping("/{expenseId}")

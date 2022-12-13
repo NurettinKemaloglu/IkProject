@@ -39,9 +39,9 @@ public class ExpensesServiceImpl implements ExpensesService {
     }
 
     @Override
-    public Boolean deleteExpense(Long expenseid) {
+    public void deleteExpense(Long expenseid) {
         expensesRepository.deleteById(expenseid);
-        return true;
+
     }
 
     @Override

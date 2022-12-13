@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
-@Repository
 
-public interface PermissionRepository extends JpaRepository<Permission,Long> {
+@Repository
+public interface PermissionRepository extends JpaRepository<Permission, Long> {
     List<Permission> findAllByUser_UserId(Long userid);
 
     @Modifying

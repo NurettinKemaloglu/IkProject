@@ -9,6 +9,7 @@ import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -26,7 +27,10 @@ public class UpdateExpenseRequestDto {
     @NotNull(message = "Vergi oranı boş geçilemez")
     private int vatPercent;
 
-    @Size(min = 10, max = 200, message
+    @Size(min = 10,
+
+
+            max = 200, message
             = "Harcama nedeni 10 ile 200 karakter arasında olmalıdır")
     private String spendingStatement;
 

@@ -45,8 +45,8 @@ public class PermissionController {
 
     @DeleteMapping("/{permissionid}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public ResponseEntity<Boolean> deletePermission(@PathVariable Long permissionid) {
-        return ResponseEntity.ok(permissionService.deletePermission(permissionid));
+    public void deletePermission(@PathVariable Long permissionid) {
+       permissionService.deletePermission(permissionid);
     }
 
     @PutMapping("/{permissionId}")

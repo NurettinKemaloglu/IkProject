@@ -7,7 +7,6 @@ import com.fmss.ikrestproject.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.List;
 
@@ -40,8 +39,8 @@ public class UserController {
 
     @DeleteMapping("/{userid}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public ResponseEntity<Boolean> deleteUser(@PathVariable Long userid) {
-        return ResponseEntity.ok(userService.deleteUser(userid));
+    public void deleteUser(@PathVariable Long userid) {
+       userService.deleteUser(userid);
     }
 
     @PutMapping("/{id}")

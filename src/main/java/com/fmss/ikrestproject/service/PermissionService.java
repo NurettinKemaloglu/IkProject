@@ -11,7 +11,7 @@ public interface PermissionService {
 
     List<PermissionResponseDto> getAllPermission();
 
-    Boolean deletePermission(Long id);
+    void deletePermission(Long id);
 
     UpdatePermissionRequestDto updatePermision(Long id, UpdatePermissionRequestDto permissionRequestDto);
 
