@@ -36,9 +36,9 @@ public class DepartmanController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public ResponseEntity<?> delete(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) {
         departmanService.delete(id);
-        return ResponseEntity.ok().build();
+
     }
 
     @PutMapping("/{id}")

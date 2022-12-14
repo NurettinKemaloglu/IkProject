@@ -38,12 +38,12 @@ public class PermissionController {
         return ResponseEntity.ok(permissionService.getPermissionsByUserId(userId));
     }
 
-    @GetMapping("/{permissionid}")
+    @GetMapping("/{permissionId}")
     public ResponseEntity<PermissionResponseDto> getPermissionById(@PathVariable Long id) {
         return ResponseEntity.ok(permissionService.getPermissionById(id));
     }
 
-    @DeleteMapping("/{permissionid}")
+    @DeleteMapping("/{permissionId}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void deletePermission(@PathVariable Long permissionid) {
        permissionService.deletePermission(permissionid);

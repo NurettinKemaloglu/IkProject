@@ -19,7 +19,7 @@ public class AddressRequestDto {
     private Long id;
     @NotBlank(message = "şehir boş olamaz")
     private String city;
-    @Pattern(regexp = "^(05)([0-9]{2})\\s?([0-9]{3})\\s?([0-9]{2})\\s?([0-9]{2})$", message = "Telefon numarası format hatası")
+    @Pattern(regexp = "^(05)([\\d]{2})\\s?([\\d]{3})\\s?([\\d]{2})\\s?([\\d]{2})$", message = "Telefon numarası format hatası")
     private String phoneNumber;
     @NotBlank(message = "ülke boş olamaz")
     private String country;

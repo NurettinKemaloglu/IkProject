@@ -32,25 +32,25 @@ public class GenaralExceptionAdvisor extends ResponseEntityExceptionHandler {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<?> userNotFoundExceptionHandler(UserNotFoundException exception) {
+    public ResponseEntity<String> userNotFoundExceptionHandler(UserNotFoundException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(ExpenseNotFoundException.class)
-    public ResponseEntity<?> expenseNotFoundExceptionHandler(ExpenseNotFoundException exception) {
+    public ResponseEntity<String> expenseNotFoundExceptionHandler(ExpenseNotFoundException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(PermissionNotFoundException.class)
-    public ResponseEntity<?> permissionNotFoundExceptionHandler(PermissionNotFoundException exception) {
+    public ResponseEntity<String> permissionNotFoundExceptionHandler(PermissionNotFoundException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> generalExceptionHandler(Exception exception) {
+    public ResponseEntity<String> generalExceptionHandler(Exception exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

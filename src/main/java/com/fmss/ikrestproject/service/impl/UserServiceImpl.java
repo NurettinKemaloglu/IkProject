@@ -7,7 +7,6 @@ import com.fmss.ikrestproject.exception.UserNotFoundException;
 import com.fmss.ikrestproject.mapper.UserMapper;
 import com.fmss.ikrestproject.model.User;
 import com.fmss.ikrestproject.repository.UserRepository;
-import com.fmss.ikrestproject.service.AddressService;
 import com.fmss.ikrestproject.service.UserService;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +17,12 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
-    private final AddressService addressService;
 
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, AddressService addressService) {
+
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper ) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
-        this.addressService = addressService;
+
 
     }
 
@@ -39,8 +38,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserResponseDto> getAllUser() {
         List<User> users = userRepository.findAll();
-        List<UserResponseDto> userDtoList = users.stream().map(userMapper::toUserDto).toList();
-        return userDtoList;
+        return users.stream().map(userMapper::toUserDto).toList();
 
     }
 
@@ -56,7 +54,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UpdateUserRequestDto UpdateUser(Long id, UpdateUserRequestDto userRequestDto) {
+    public UpdateUserRequestDto updateUser(Long id, UpdateUserRequestDto userRequestDto) {
         userRepository.updateUser(userRequestDto.getEmail(), userRequestDto.getTitle(), userRequestDto.getRole(), userRequestDto.getSalary(), id);
         return userRequestDto;
     }

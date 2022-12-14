@@ -1,6 +1,5 @@
 package com.fmss.ikrestproject.client.dto.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fmss.ikrestproject.utils.enums.Level;
 import com.fmss.ikrestproject.utils.enums.Title;
 import lombok.Getter;
@@ -22,7 +21,7 @@ public class UserRequestDto {
     @Email(regexp = "^(.+)@(.+)$", message = "Email is not valid. Please follow the example: turkcell@mail.com")
     @NotBlank(message = "E-posta boş olmamalıdır")
     protected String email;
-    @Pattern(regexp = "^[1-9]{1}[0-9]{9}[02468]{1}$", message = "Tc No format hatası")
+    @Pattern(regexp = "^[1-9][\\d]{9}[02468]$", message = "Tc No format hatası")
     private String tckn;
     @PastOrPresent
     private LocalDate userDateOfStart;
@@ -33,14 +32,13 @@ public class UserRequestDto {
     private Title title;
     @NotNull(message = "depertman boş geçilemez")
     private Long department;
-    @JsonProperty(value = "birth-date")
-    @Past
+    @Past(message = "Geçersiz doğum günü")
     private LocalDate birthDate;
     private String role;
     private Level level;
     //Adress Bilgileri
     private String city;
-    @Pattern(regexp = "^(05)([0-9]{2})\\s?([0-9]{3})\\s?([0-9]{2})\\s?([0-9]{2})$", message = "Telefon numarası format hatası")
+    @Pattern(regexp = "^(05)([\\d]{2})\\s?([\\d]{3})\\s?([\\d]{2})\\s?([\\d]{2})$", message = "Telefon numarası format hatası")
     private String phoneNumber;
     private String country;
 

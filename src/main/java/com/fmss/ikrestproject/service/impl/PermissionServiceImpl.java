@@ -24,7 +24,7 @@ public class PermissionServiceImpl implements PermissionService {
     @Override
     public PermissionResponseDto createPermission(PermissionRequestDto permissionRequestDto) {
         Permission permission = permissionMapper.toPermission(permissionRequestDto);
-        var don = permissionRepository.save(permission);
+        permissionRepository.save(permission);
         return permissionMapper.toPermissionDto(permission);
     }
 

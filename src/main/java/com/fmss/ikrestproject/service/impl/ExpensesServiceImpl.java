@@ -5,14 +5,14 @@ import com.fmss.ikrestproject.client.dto.request.UpdateExpenseRequestDto;
 import com.fmss.ikrestproject.client.dto.responce.ExpenseResponseDto;
 import com.fmss.ikrestproject.exception.ExpenseNotFoundException;
 import com.fmss.ikrestproject.mapper.ExpensesMapper;
-import com.fmss.ikrestproject.mapper.UserMapper;
+
 import com.fmss.ikrestproject.model.Expenses;
 import com.fmss.ikrestproject.repository.ExpensesRepository;
-import com.fmss.ikrestproject.repository.UserRepository;
+
 import com.fmss.ikrestproject.service.ExpensesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -21,12 +21,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ExpensesServiceImpl implements ExpensesService {
     private final ExpensesRepository expensesRepository;
-    private final UserRepository userRepository;
     private final ExpensesMapper expensesMapper;
-    private final UserMapper userMapper;
 
     @Override
-    @Transactional
     public ExpenseResponseDto createExpense(ExpenseRequestDto expenseRequestDto) {
         Expenses expenses = expensesMapper.toExpenses(expenseRequestDto);
         expensesRepository.save(expenses);
@@ -46,9 +43,9 @@ public class ExpensesServiceImpl implements ExpensesService {
 
     @Override
     public List<ExpenseResponseDto> getExpense() {
-        List<Expenses> users = expensesRepository.findAll();
-        List<ExpenseResponseDto> expenseResponseDtoList = users.stream().map(expensesMapper::toExpenseDto).toList();
-        return expenseResponseDtoList;
+        List<Expenses> expenses = expensesRepository.findAll();
+        return expenses.stream().map(expensesMapper::toExpenseDto).toList();
+
 
     }
 
@@ -60,7 +57,7 @@ public class ExpensesServiceImpl implements ExpensesService {
 
     @Override
     public UpdateExpenseRequestDto updateExpense(Long expenseId, UpdateExpenseRequestDto expenseRequestDto) {
-        expensesRepository.updateExpense(expenseRequestDto.getReceiptDate(),expenseRequestDto.getSpendingAmounut(),expenseRequestDto.getSpendingStatement(),expenseRequestDto.getTypeOfExpenditure(),expenseRequestDto.getVatPercent(),expenseId);
+        expensesRepository.updateExpense(expenseRequestDto.getReceiptDate(), expenseRequestDto.getSpendingAmounut(), expenseRequestDto.getSpendingStatement(), expenseRequestDto.getTypeOfExpenditure(), expenseRequestDto.getVatPercent(), expenseId);
         return expenseRequestDto;
     }
 }
