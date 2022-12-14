@@ -5,14 +5,12 @@ import com.fmss.ikrestproject.client.dto.responce.UserResponseDto;
 import com.fmss.ikrestproject.model.Address;
 import com.fmss.ikrestproject.model.User;
 import com.fmss.ikrestproject.service.DepartmanService;
-
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
 public class UserMapper {
-    private final AddressMapper addressMapper;
     private final DepartmanService departmanService;
 
     public UserResponseDto toUserDto(User user) {

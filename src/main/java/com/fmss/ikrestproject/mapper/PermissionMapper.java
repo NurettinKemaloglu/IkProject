@@ -3,12 +3,18 @@ package com.fmss.ikrestproject.mapper;
 
 import com.fmss.ikrestproject.client.dto.request.PermissionRequestDto;
 import com.fmss.ikrestproject.client.dto.responce.PermissionResponseDto;
+import com.fmss.ikrestproject.exception.UserNotFoundException;
 import com.fmss.ikrestproject.model.Permission;
-import com.fmss.ikrestproject.model.User;
+import com.fmss.ikrestproject.repository.UserRepository;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PermissionMapper {
+    private final UserRepository userRepository;
+
+    public PermissionMapper(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public PermissionResponseDto toPermissionDto(Permission permission) {
         final var permissionDto = new PermissionResponseDto();
@@ -31,7 +37,7 @@ public class PermissionMapper {
         permission.setEndDate(permissionRequestDto.getEndDate());
         permission.setDateOfReturn(permissionRequestDto.getDateOfReturn());
         permission.setTotalDays(permissionRequestDto.getTotalDays());
-        permission.setUser(User.builder().userId(permissionRequestDto.getUserid()).build());
+        permission.setUser(userRepository.findById(permissionRequestDto.getUserid()).orElseThrow(()->new  UserNotFoundException("Kullanıcı Bulunamadı")));
         return permission;
     }
 }

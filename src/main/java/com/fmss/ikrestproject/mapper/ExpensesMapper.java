@@ -2,13 +2,18 @@ package com.fmss.ikrestproject.mapper;
 
 import com.fmss.ikrestproject.client.dto.request.ExpenseRequestDto;
 import com.fmss.ikrestproject.client.dto.responce.ExpenseResponseDto;
+import com.fmss.ikrestproject.exception.UserNotFoundException;
 import com.fmss.ikrestproject.model.Expenses;
-import com.fmss.ikrestproject.model.User;
+import com.fmss.ikrestproject.repository.UserRepository;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ExpensesMapper {
+    private final UserRepository userRepository;
 
+    public ExpensesMapper(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public ExpenseResponseDto toExpenseDto(Expenses expenses) {
         final var expenseDto = new ExpenseResponseDto();
@@ -32,7 +37,7 @@ public class ExpensesMapper {
         expenses.setReceiptDate(expenseRequestDto.getReceiptDate());
         expenses.setVatPercent(expenseRequestDto.getVatPercent());
         expenses.setSpendingStatement(expenseRequestDto.getSpendingStatement());
-        expenses.setUser(User.builder().userId(expenseRequestDto.getUserid()).build());
+        expenses.setUser(userRepository.findById(expenseRequestDto.getUserid()).orElseThrow(()-> new UserNotFoundException("Kulalnıcı bulunamdı")));
         return expenses;
     }
 
