@@ -25,7 +25,6 @@ public class ExpensesMapper {
         expenseDto.setUserName(expenses.getUser().getName());
         expenseDto.setLastName((expenses.getUser().getLastName()));
         expenseDto.setId(expenses.getId());
-
         return expenseDto;
 
     }
