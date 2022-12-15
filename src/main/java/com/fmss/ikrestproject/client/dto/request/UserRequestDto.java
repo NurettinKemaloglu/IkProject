@@ -18,6 +18,7 @@ public class UserRequestDto {
     private String name;
     @Size(min = 3)
     private String lastName;
+
     @Email(regexp = "^(.+)@(.+)$", message = "Email is not valid. Please follow the example: turkcell@mail.com")
     @NotBlank(message = "E-posta boş olmamalıdır")
     protected String email;
@@ -44,8 +45,7 @@ public class UserRequestDto {
 
     private String postCode;
 
-    @Size(min = 10, max = 200, message
-            = "Adres 10 ile 200 karakter arasında olmalıdır")
+    @Size(min = 10, max = 200, message = "Adres 10 ile 200 karakter arasında olmalıdır")
     private String address;
 
 

@@ -39,7 +39,12 @@ public class UserMapper {
         user.setRole(userRequestDto.getRole());
         user.setTckn(userRequestDto.getTckn());
         user.setSalary(userRequestDto.getSalary());
-        user.setDepartment(departmanService.getById(userRequestDto.getDepartment()));
+        try {
+            user.setDepartment(departmanService.getById(userRequestDto.getDepartment()));
+        }catch (Exception ex){
+            System.out.println();
+        }
+
         user.setTitle(userRequestDto.getTitle());
         user.setUserDateOfStart(userRequestDto.getUserDateOfStart());
         user.setName(userRequestDto.getName());
