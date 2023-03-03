@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 public class ExpensesMapper {
     private final UserRepository userRepository;
 
+
     public ExpensesMapper(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -38,6 +39,7 @@ public class ExpensesMapper {
         expenses.setSpendingStatement(expenseRequestDto.getSpendingStatement());
         expenses.setUser(userRepository.findById(expenseRequestDto.getUserid()).orElseThrow(()-> new UserNotFoundException("Kulalnıcı bulunamdı")));
         return expenses;
+
     }
 
 }
